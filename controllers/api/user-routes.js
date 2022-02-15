@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
             exclude: ['password'] 
         }
     })
-    .then(userInfo => res.json(userInfo))
+    .then(dbUserData => res.json(dbUserData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -26,12 +26,12 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
     })
-    .then(userInfo => {
-        if (!userInfo) {
+    .then(dbUserData => {
+        if (!dbUserData) {
             res.status(404).json({ message: 'There is no user by that id!'});
             return;
         }
-        res.json(userInfo);
+        res.json(dbUserData);
     })
     .catch(err => {
         console.log(err);
@@ -39,27 +39,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST create one user - /api/users
-router.post('/', (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    })
-    .then(userInfo => {
-        req.session.save(() => {
-            req.session.user_id = userInfo.id;
-            req.session.username = userInfo.username;
-            req.session.loggedIn = true;
-
-            res.json(userInfo);
-        });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
 
 // POST authorize user in login - /api/users/login
 router.post('/login', (req, res) => {
@@ -68,13 +47,13 @@ router.post('/login', (req, res) => {
             email: req.body.email
         }
     })
-    .then(userInfo => {
-        if (!userInfo) {
+    .then(dbUserData => {
+        if (!dbUserData) {
             res.status(400).json({ message: 'No user with that email address!'});
             return;
         }
 
-        const validatePassword = userInfo.checkPassword(req.body.password);
+        const validatePassword = dbUserData.checkPassword(req.body.password);
 
         if (!validatePassword) {
             res.status(400).json({ message: 'Incorrect password!'});
@@ -82,11 +61,11 @@ router.post('/login', (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = userInfo.id;
-            req.session.username = userInfo.username;
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
             req.session.loggedIn =  true;
 
-            res.json({ user: userInfo, message: 'You are now logged in!'});
+            res.json({ user: dbUserData, message: 'You are now logged in!'});
         });
     });
 });
@@ -109,12 +88,12 @@ router.put('/:id', (req,res) => {
             id: req.params.id
         }
     })
-        .then(userInfo => {
-            if (!userInfo[0]) {
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-            res.json(userInfo);
+            res.json(dbUserData);
         })
         .catch(err => {
             console.log(err);
@@ -129,12 +108,12 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-        .then(userInfo => {
-            if (!userInfo) {
+        .then(dbUserData => {
+            if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-            res.json(userInfo);
+            res.json(dbUserData);
         })
         .catch(err => {
             console.log(err);
