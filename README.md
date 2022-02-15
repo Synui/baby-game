@@ -25,15 +25,11 @@
 ## <a name="about-the-project"></a>About the Project
 
 
-
   
 
 ### User Story:
+As an expecting mother I want to register and have family members and friends determine the due date of the baby as well as the gender and weight.
 
-
-
-
-  
 
 ### Created with:
 
@@ -50,7 +46,7 @@
   
 
 ## <a name="future-development"></a>Future Development
-
+For future development we would like for this project to be able to connect to other social media.  We would like to incorporate baby-shower-games that can be played within the app.
 
   
 
