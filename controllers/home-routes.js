@@ -33,13 +33,13 @@
 //           return;
 //         }
 //         // serialize the data
-//         // const post = dbUserData.get({ plain: true });
+//         const post = dbUserData.get({ plain: true });
   
 //         // pass data to template
-//         // res.render('single-post', {
-//         //     post,
-//         //     loggedIn: req.session.loggedIn
-//         //   });
+//         res.render('single-post', {
+//             post,
+//             loggedIn: req.session.loggedIn
+//           });
 //       })
 //       .catch(err => {
 //         console.log(err);
