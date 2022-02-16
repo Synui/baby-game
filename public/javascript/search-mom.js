@@ -1,9 +1,8 @@
-// const fs = require("fs");
-// const path = require("path");
 
-// searchMom = (moms) => {
-//     let emailMom = moms;
-//     emailMom = emailMom.filter(
-//         (mom) => mom.email === mom
-//     )
+// getData();
+
+// async function getData() {
+//     const response = await fetch('/api');
+//     const data = await response.json();
+//     console.log(data);
 // }
