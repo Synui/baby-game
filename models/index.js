@@ -11,7 +11,7 @@ Post.belongsTo(Mom, {
     foreignKey: 'mom_id',
 });
 
-Guest.belongsToOne(Mom, {
+Guest.belongsTo(Mom, {
     foreignKey: 'mom_id'
 })
 
