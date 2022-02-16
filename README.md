@@ -31,12 +31,6 @@
 As an expecting mother I want to register and have family members and friends determine the due date of the baby as well as the gender and weight.
 
 
-### Created with:
-
-
-
-  
-
 ## <a name="motivation"></a>Motivation
 
   
@@ -46,10 +40,14 @@ As an expecting mother I want to register and have family members and friends de
   
 
 ## <a name="future-development"></a>Future Development
-For future development we would like for this project to be able to connect to other social media.  We would like to incorporate baby-shower-games that can be played within the app.
-
+1. For future development we would like for this project to be able to connect to other social media.
+2. We would like to incorporate baby-shower-games that can be played within the app.
+3. Implement a automatic removal method of the users who's guess (on the baby's date of birth)was incorrect.
   
 
 ## Acknowledgments
-
+- [Handlebars](https://handlebarsjs.com/)
+- [Sequelize](https://sequelize.org/v5/)
+- [MySQL](https://www.mysql.com/)
+- [Bulma](https://bulma.io/)
 
