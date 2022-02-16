@@ -11,8 +11,12 @@ Post.belongsTo(Mom, {
     foreignKey: 'mom_id',
 });
 
-Guest.belongsTo(Mom, {
+Guest.belongsToOne(Mom, {
     foreignKey: 'mom_id'
 })
 
-module.exports = { Post, Mom };
+// Post.hasMany(Questions, {
+//     foreignKey: 'post_id'
+// });
+
+module.exports = { Post, Mom, Guest };
