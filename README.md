@@ -48,6 +48,8 @@ As an expecting mother I want to register and have family members and friends de
 ## Acknowledgments
 - [Handlebars](https://handlebarsjs.com/)
 - [Sequelize](https://sequelize.org/v5/)
+- [Express](https://www.npmjs.com/package/express)
 - [MySQL](https://www.mysql.com/)
 - [Bulma](https://bulma.io/)
+- [Heroku](https://www.heroku.com/home)
 
