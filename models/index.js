@@ -23,11 +23,10 @@ Guest.belongsTo(Mom, {
     foreignKey: 'mom_id'
 });
 
-
 Answers.belongsTo(Guest, {
     foreignKey: 'guest_id'
 });
-=======
+
 Guest.belongsTo(Post, {
     foreignKey: 'mom_id'
 })
