@@ -19,7 +19,7 @@ async function signupFormHandler(event) {
         })
         // check the response status
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/cards-with-posts');
         } else {
             alert(response.statusText);
         }

@@ -6,8 +6,7 @@ router.get('/', (req, res) => {
     console.log(req.session);
     Post.findAll({
         attributes: [
-            'id',
-            'title'
+            'id'
         ],
         include: [
             {
@@ -41,7 +40,7 @@ router.get('/', (req, res) => {
 
 router.get('/mom-login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/dashboard');
+      res.redirect('cards-with-posts');
       return;
     }
   
@@ -59,7 +58,7 @@ router.get('/mom-login', (req, res) => {
 
   router.get('/mom-register', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/dashboard');
+      res.redirect('cards-with-posts');
       return;
     }
   
@@ -68,11 +67,12 @@ router.get('/mom-login', (req, res) => {
 
   router.get('/guest-register', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/dashboard');
+      res.redirect('dashboard');
       return;
     }
   
     res.render('guest-register');
   });
+
 
   module.exports = router;

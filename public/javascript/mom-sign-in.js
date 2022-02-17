@@ -15,7 +15,7 @@ async function momLoginHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/cards-with-posts');
         } else {
             alert(response.statusText);
         }
