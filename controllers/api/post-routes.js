@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     Post.findAll({
         // Query configuration
         // add other content needed to post
-        attributes: ['id', 'title', 'created_at'],
+        attributes: ['id', 'created_at'],
         order: [['created_at', 'DESC']],
         // include the JOIN to the mom table
         include: [
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         // add other content needed to post
-        attributes: ['id', 'title', 'created_at'],
+        attributes: ['id', 'created_at'],
         include: [
             {
                 // add other content needed to post
@@ -57,7 +57,6 @@ router.get('/:id', (req, res) => {
 // create a post
 router.post('/', (req, res) => {
     Post.create({
-        title: req.body.title,
         mom_id: req.body.mom_id
         // add other content needed to post
     })
@@ -69,29 +68,29 @@ router.post('/', (req, res) => {
 });
 
 // update post title
-router.put('/:id', (req, res) => {
-    Post.update(
-        {
-            title: req.body.title
-        },
-        {
-            where: {
-                id: req.params.id
-            }
-        }
-    )
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-        }
-        res.json(dbPostData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+// router.put('/:id', (req, res) => {
+//     Post.update(
+//         {
+//             title: req.body.title
+//         },
+//         {
+//             where: {
+//                 id: req.params.id
+//             }
+//         }
+//     )
+//     .then(dbPostData => {
+//         if(!dbPostData) {
+//             res.status(404).json({ message: 'No post found with this id' });
+//             return;
+//         }
+//         res.json(dbPostData);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 // delete post
 router.delete('/:id', (req, res) => {

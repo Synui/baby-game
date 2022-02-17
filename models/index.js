@@ -15,9 +15,14 @@ Mom.hasMany(Guest, {
 Post.belongsTo(Mom, {
     foreignKey: 'mom_id'
 });
+
  Post.hasMany(Guest, {
      foreignKey: 'mom_id'
  });
+ 
+Guest.hasOne(Answers, {
+    foreignKey: 'guest_id'
+});
 
 Guest.belongsTo(Mom, {
     foreignKey: 'mom_id'
@@ -30,6 +35,5 @@ Answers.belongsTo(Guest, {
 Guest.belongsTo(Post, {
     foreignKey: 'mom_id'
 })
-
 
 module.exports = { Post, Mom, Guest, Answers };

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Mom, Guest, Post } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 // GET all Moms - /api/Moms
 router.get('/', (req, res) => {
@@ -27,8 +27,7 @@ router.get('/:id', (req, res) => {
             {
                 model: Post,
                 attributes: [
-                    'id',
-                    'title'
+                    'id'
                 ]
             },
             {

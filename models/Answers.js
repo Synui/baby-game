@@ -17,8 +17,8 @@ Answers.init(
             allowNull: false,
         },
         weight_in_pounds: {
-            type: DataTypes.DECIMAL(3,3),
-            allowNull:false
+            type: DataTypes.DECIMAL(5,1),
+            allowNull: false
         },
         date_of_birth: {
             type: DataTypes.DATE,
@@ -37,7 +37,7 @@ Answers.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post'
+        modelName: 'answers'
     }
 );
 

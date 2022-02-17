@@ -13,10 +13,6 @@ Post.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         mom_id: {
             type: DataTypes.INTEGER,
             references: {
