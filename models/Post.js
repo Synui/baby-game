@@ -13,14 +13,10 @@ Post.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        user_id: {
+        mom_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'mom',
                 key: 'id'
             }
         }

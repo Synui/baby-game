@@ -1,42 +1,39 @@
-const Post = require("./Post");
-const Vote = require("./Vote");
-const User = require("./User")
+const Post = require('./Post');
+const Mom = require('./Mom');
+const Guest = require('./Guest');
+const Answers = require('./Answers');
 
 // create associations
-User.hasMany(Post, {
-    foreignKey: 'user_id'
+Mom.hasMany(Post, {
+    foreignKey: 'mom_id'
 });
 
-// if we change Post to Mom then users belong to one mom
-User.belongsToOne(Post, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'user_id'
+Mom.hasMany(Guest, {
+    foreignKey: 'mom_id'
 });
 
-
-Post.belongsToMany(User, {
-    through: Vote,
-    as: 'voted_posts',
-    foreignKey: 'post_id'
+Post.belongsTo(Mom, {
+    foreignKey: 'mom_id'
 });
 
-Vote.belongsTo(User, {
-    foreignKey: 'user_id'
+ Post.hasMany(Guest, {
+     foreignKey: 'mom_id'
+ });
+ 
+Guest.hasOne(Answers, {
+    foreignKey: 'guest_id'
 });
 
-
-Vote.belongsTo(Post, {
-    foreignKey: 'post_id'
+Guest.belongsTo(Mom, {
+    foreignKey: 'mom_id'
 });
 
-User.hasMany(Vote, {
-    foreignKey: 'user_id'
+Answers.belongsTo(Guest, {
+    foreignKey: 'guest_id'
 });
 
-Post.hasMany(Questions, {
-    foreignKey: 'post_id'
-});
+Guest.belongsTo(Post, {
+    foreignKey: 'mom_id'
+})
 
-
-module.exports = {  User, Post, Vote };
+module.exports = { Post, Mom, Guest, Answers };

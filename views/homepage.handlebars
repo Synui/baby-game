@@ -1,1 +1,51 @@
-<div>You are on the homepage</div>
+<section class="section has-background-black">
+	<p class="title is-1 has-text-white has-text-centered">Baby Shower Game</p>
+	<div class="container">
+		<div class="columns is-variable">
+
+			<div class="column">
+				<div class="box">
+					<p class="is-size-5">
+						<label class="label is-medium title is-3 has-text-centered">Future Mom</label>
+					<div class="buttons is-centered">
+						{{#if loggedIn}}
+						<button id="mom-logout" class="button is-responsive is-black">Logout</button>
+						{{else}}
+						<a href="/mom-register">
+							<button class="button is-centered is-responsive is-black">Register</button>
+						</a>
+						<a href="/mom-login">
+							<button class="button is-centered is-responsive is-black">Sign in</button>
+						</a>
+						{{/if}}
+					</div>
+					</p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="box is-centered">
+					<p class="is-size-5">
+						<label class="label is-medium title is-3 has-text-centered">Baby Shower Guests</label>
+					<div class="buttons is-centered">
+						{{#if loggedIn}}
+						<button id="guest-logout" class="button is-responsive is-black">Logout</button>
+						{{else}}
+						<a href="/guest-register">
+							<button class="button is-responsive is-black">Register</button>
+						</a>
+						<a href="/guest-login">
+							<button class="button is-responsive is-black">Sign in</button>
+						</a>
+						{{/if}}
+					</div>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<script src="/javascript/mom-logout.js"></script>
+<script src="/javascript/guest-logout.js"></script>

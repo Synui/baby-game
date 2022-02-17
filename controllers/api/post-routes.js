@@ -1,19 +1,20 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, Mom } = require('../../models');
+// const withAuth = require('../../utils/auth');
 
-// get all users
+// get all posts
 router.get('/', (req, res) => {
     Post.findAll({
         // Query configuration
         // add other content needed to post
-        attributes: ['id', 'title', 'created_at'],
+        attributes: ['id', 'created_at'],
         order: [['created_at', 'DESC']],
-        // include the JOIN to the User table
+        // include the JOIN to the mom table
         include: [
             {
-                model: User,
-                attributes: ['username']
-            }
+                model: Mom,
+                attributes: ['name']
+            },
         ]
     })
     .then(dbPostData => res.json(dbPostData))
@@ -31,12 +32,12 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         // add other content needed to post
-        attributes: ['id', 'title', 'created_at'],
+        attributes: ['id', 'created_at'],
         include: [
             {
                 // add other content needed to post
-                model: User,
-                attributes: ['username']
+                model: Mom,
+                attributes: ['name']
             }
         ]
     })
@@ -56,8 +57,7 @@ router.get('/:id', (req, res) => {
 // create a post
 router.post('/', (req, res) => {
     Post.create({
-        title: req.body.title,
-        user_id: req.body.user_id
+        mom_id: req.body.mom_id
         // add other content needed to post
     })
     .then(dbPostData => res.json(dbPostData))
@@ -68,29 +68,29 @@ router.post('/', (req, res) => {
 });
 
 // update post title
-router.put('/:id', (req, res) => {
-    Post.update(
-        {
-            title: req.body.title
-        },
-        {
-            where: {
-                id: req.params.id
-            }
-        }
-    )
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-        }
-        res.json(dbPostData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+// router.put('/:id', (req, res) => {
+//     Post.update(
+//         {
+//             title: req.body.title
+//         },
+//         {
+//             where: {
+//                 id: req.params.id
+//             }
+//         }
+//     )
+//     .then(dbPostData => {
+//         if(!dbPostData) {
+//             res.status(404).json({ message: 'No post found with this id' });
+//             return;
+//         }
+//         res.json(dbPostData);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 // delete post
 router.delete('/:id', (req, res) => {

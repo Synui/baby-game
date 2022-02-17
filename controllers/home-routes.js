@@ -1,59 +1,78 @@
-// const router = require('express').Router();
-// const { User } = require('../models');
+const router = require('express').Router();
+const { Post, Mom, Guest } = require('../models');
 
-// // GET all posts on homepage - /
-// router.get('/', (req, res) => {
-//   User.findAll({
-//       attributes: { 
-//           exclude: ['password'] 
-//       }
-//   })
-//   .then(dbUserData => res.json(dbUserData))
-//   .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//   });
-// });
+// GET all posts on homepage - /
+router.get('/', (req, res) => {
+    console.log(req.session);
+    Post.findAll({
+        attributes: [
+            'id'
+        ],
+        include: [
+            {
+              model: Mom,
+              attributes: [
+                  'id', 
+                  'name', 
+                ]
+            },
+            {
+                model: Guest,
+                attributes: [
+                    'id',
+                    'name'
+                ]
+            }
+          ]
+    })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+            res.render('homepage', {
+                posts,
+                loggedIn: req.session.loggedIn
+              });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
-
-// router.get('/:id', (req, res) => {
-//     User.findOne({
-//       where: {
-//         email: req.params.email
-//       },
-//       attributes: [
-//         'email',
-//         'name',
-//         'id'
-//       ]
-//     })
-//       .then(dbUserData => {
-//         if (!dbUserData) {
-//           res.status(404).json({ message: 'No user found with this email' });
-//           return;
-//         }
-//         // serialize the data
-//         const post = dbUserData.get({ plain: true });
+router.get('/mom-login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('cards-with-posts');
+      return;
+    }
   
-//         // pass data to template
-//         res.render('single-post', {
-//             post,
-//             loggedIn: req.session.loggedIn
-//           });
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
+    res.render('mom-sign-in');
+  });
 
-// router.get('/login', (req, res) => {
-//     if (req.session.loggedIn) {
-//       res.redirect('/');
-//       return;
-//     }
+  router.get('/guest-login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('dashboard');
+      return;
+    }
   
-//     res.render('login');
-//   });
+    res.render('guest-sign-in');
+  });
 
-// module.exports = router;
+  router.get('/mom-register', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('cards-with-posts');
+      return;
+    }
+  
+    res.render('mom-register');
+  });
+
+  router.get('/guest-register', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('dashboard');
+      return;
+    }
+  
+    res.render('guest-register');
+  });
+
+
+  module.exports = router;

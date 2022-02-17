@@ -31,12 +31,6 @@
 As an expecting mother I want to register and have family members and friends determine the due date of the baby as well as the gender and weight.
 
 
-### Created with:
-
-
-
-  
-
 ## <a name="motivation"></a>Motivation
 
   
@@ -46,10 +40,18 @@ As an expecting mother I want to register and have family members and friends de
   
 
 ## <a name="future-development"></a>Future Development
-For future development we would like for this project to be able to connect to other social media.  We would like to incorporate baby-shower-games that can be played within the app.
-
+1. Add a like button capability on guests posts
+2. Add a table that displays votes and users in ascending order by date and/or weight
+3. Add a table that separates who voted for girl or boy
+3. Make the voting card into a quiz like game instead of stationary form
+Searchable “Find baby mama” if you don’t know her email address
+4. Add an additional “suggest a name” field
+5. Game option- competition. Place everyone’s votes by date. If your guessed date passed and baby wasn’t born, you are eliminated. If your guessed date comes after baby is born, you are eliminated.  If more than one guest guessed the right date, the elimination continues based on who is closest to the baby’s weight to find a winner. 
   
 
 ## Acknowledgments
-
+- [Handlebars](https://handlebarsjs.com/)
+- [Sequelize](https://sequelize.org/v5/)
+- [MySQL](https://www.mysql.com/)
+- [Bulma](https://bulma.io/)
 
