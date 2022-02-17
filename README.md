@@ -8,7 +8,7 @@
 -  [Motivation](#motivation)
 -  [Project Demo](#project-demo)
 -  [Future Development](#future-development)
--  [Acknowledgments](#acknowledgements)
+-  [Acknowledgements](#acknowledgements)
 
 ## <a name="team-members"></a>Team Members
 - Melany Pietrowski
@@ -34,7 +34,7 @@ The motivation for this app is to benefit mothers so that their family members a
 1. We would like to incorporate more baby-shower-games that can be played within the app.
 2. Implement a automatic removal of users with incorrect guesses.
 
-## Acknowledgments
+## Acknowledgements
 - [Handlebars](https://handlebarsjs.com/)
 - [Sequelize](https://sequelize.org/v5/)
 - [Express](https://www.npmjs.com/package/express)
