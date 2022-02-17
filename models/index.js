@@ -1,6 +1,7 @@
 const Post = require('./Post');
 const Mom = require('./Mom');
 const Guest = require('./Guest');
+const Answers = require('./Answers');
 
 // create associations
 Mom.hasMany(Post, {
@@ -22,8 +23,14 @@ Guest.belongsTo(Mom, {
     foreignKey: 'mom_id'
 });
 
+
+Answers.belongsTo(Guest, {
+    foreignKey: 'guest_id'
+});
+=======
 Guest.belongsTo(Post, {
     foreignKey: 'mom_id'
 })
 
-module.exports = { Post, Mom, Guest };
+
+module.exports = { Post, Mom, Guest, Answers };
