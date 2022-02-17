@@ -2,28 +2,29 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-// User model
-class User extends Model {
+// Guest model
+class Guest extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
 
-User.init(
+Guest.init(
     {
-        // unique id per user
+        // unique id per guest
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        // user's own name
-        username: {
+        // guest's own name
+        name: {
             type: DataTypes.STRING,
+            isAdmin: true,
             allowNull: false
         },
-        // user's own email
+        // guest's own email
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -32,34 +33,41 @@ User.init(
                 isEmail: true
             }
         },
-        // user's own password
+        // guest's own password
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [6, 16]
             }
+        },
+        mom_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'mom',
+                key: 'id'
+            }
         }
     },
     {
         hooks: {
             // set up beforeCreate lifecycle "hook" functionality
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
+            async beforeCreate(newGuestData) {
+                newGuestData.password = await bcrypt.hash(newGuestData.password, 10);
+                return newGuestData;
             },
 
-            async beforeUpdate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-                return updatedUserData;
+            async beforeUpdate(updatedGuestData) {
+                updatedGuestData.password = await bcrypt.hash(updatedGuestData.password, 10);
+                return updatedGuestData;
             }
         },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user'
+        modelName: 'guest'
     }
 );
 
-module.exports = User;
+module.exports = Guest;

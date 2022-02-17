@@ -1,19 +1,18 @@
 const router = require('express').Router();
-const { Post, User, Vote } = require('../../models');
-const { sequelize } = require('../../models/Post');
+const { Post, Mom } = require('../../models');
 
-// get all users
+// get all moms
 router.get('/', (req, res) => {
     Post.findAll({
         // Query configuration
         // add other content needed to post
         attributes: ['id', 'title', 'created_at'],
         order: [['created_at', 'DESC']],
-        // include the JOIN to the User table
+        // include the JOIN to the mom table
         include: [
             {
-                model: User,
-                attributes: ['username']
+                model: Mom,
+                attributes: ['name']
             }
         ]
     })
@@ -36,8 +35,8 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 // add other content needed to post
-                model: User,
-                attributes: ['username']
+                model: Mom,
+                attributes: ['name']
             }
         ]
     })
@@ -58,7 +57,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        user_id: req.body.user_id
+        mom_id: req.body.mom_id
         // add other content needed to post
     })
     .then(dbPostData => res.json(dbPostData))

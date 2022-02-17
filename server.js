@@ -7,10 +7,6 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
-// require route front-end can req data from
-const { mom } = require('./data/mom')
-
-
 // defining app template engine using handlebards
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ helpers });
@@ -41,10 +37,6 @@ app.set('view engine', 'handlebars');
 // turn on routes
 app.use(routes);
 
-// route front end can req data
-app.get('/api/mom', (req,res) => {
-  res.send('Hello')
-});
 
 // turn on connection to db and server
 // changing force: fasle to true is the same as DROP TABLE IF EXISTS in MYSQL
