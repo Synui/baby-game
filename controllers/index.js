@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const momPage = require('./make-vote-page-routes.js');
+const dashboardRoutes = require('./dashboard-routes.js');
 const apiRoutes = require('./api');
 const homeRoutes = require('./home-routes.js');
 
-router.use('/mom-page', momPage);
+router.use('/dashboard', dashboardRoutes);
 router.use('/api', apiRoutes);
 router.use('/', homeRoutes)
 

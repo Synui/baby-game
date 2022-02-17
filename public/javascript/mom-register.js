@@ -1,24 +1,25 @@
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#mom-name-register').value.trim();
+    const name = document.querySelector('#mom-name-register').value.trim();
     const email = document.querySelector('#mom-email-register').value.trim();
     const password = document.querySelector('#mom-password-register').value.trim();
-    const dob = document.querySelector('#baby-dob').val.trim();
+    const dob = document.querySelector('#baby-dob');
 
-    if (username && email && password && dob) {
-        const response = await fetch('/api/users', {
+    if (name && email && password && dob) {
+        const response = await fetch('/api/moms/', {
             method: 'post',
             body: JSON.stringify({
-                username,
+                name,
                 email,
-                password
+                password,
+                dob
             }),
             headers: { 'Content-Type': 'application/json' }
         })
         // check the response status
         if (response.ok) {
-            document.location.replace('/make-your-vote');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }

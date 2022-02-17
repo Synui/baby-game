@@ -15,7 +15,7 @@ async function guestLoginHandler(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/make-your-vote');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }

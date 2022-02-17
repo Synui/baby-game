@@ -41,25 +41,25 @@ router.get('/', (req, res) => {
 
 router.get('/mom-login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('/dashboard');
       return;
     }
   
-    res.render('mom-login');
+    res.render('mom-sign-in');
   });
 
   router.get('/guest-login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('dashboard');
       return;
     }
   
-    res.render('guest-login');
+    res.render('guest-sign-in');
   });
 
   router.get('/mom-register', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('make-your-vote');
+      res.redirect('/dashboard');
       return;
     }
   
@@ -68,7 +68,7 @@ router.get('/mom-login', (req, res) => {
 
   router.get('/guest-register', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('/dashboard');
       return;
     }
   

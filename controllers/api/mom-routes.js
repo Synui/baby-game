@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
 });
 
 // POST authorize mom in login - /api/moms/login
-router.post('/mom/login', (req, res) => {
+router.post('/login', (req, res) => {
     Mom.findOne({
         where: {
             email: req.body.email

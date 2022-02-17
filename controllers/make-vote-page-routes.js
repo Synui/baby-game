@@ -11,8 +11,7 @@ router.get('/:id', (req, res) => {
         user_id: req.session.user_id
       },
       attributes: [
-        'id',
-        'title'
+        'id'
       ],
       include: [
         {
@@ -31,9 +30,9 @@ router.get('/:id', (req, res) => {
         }
       ]
     })
-      .then(postInfo => {
+      .then(dbPostData => {
         // serialize data before passing to template
-        const posts = postInfo.map(post => post.get({ plain: true }));
+        const posts = dbPostData.map(post => post.get({ plain: true }));
         res.render('make-vote-page', { 
             posts, 
             loggedIn: true 
