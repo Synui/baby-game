@@ -1,0 +1,77 @@
+{{!-- {{#if loggedIn}} --}}
+<p class="title is-1 has-text-white">Time to make your Votes!</p>
+
+<form class="box has-background-black">
+    <div class="container">
+        <div class="notification has-background-white">
+            <div class="block">
+                <h1 class="title is-4">
+                    <a href="/moms/{{id}}">{{name}}</a> will pick a winner when baby is born! Make sure to fill out every
+                    field.</h1>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <label class="label">Pick a gender</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="member">
+                                Boy
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="member">
+                                Girl
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <label class="label">How much do you think baby will weigh?</label>
+                <div class="control">
+                    <div class="select">
+                        <select>
+                            <option>Select dropdown</option>
+                            <option>Less than 6 pounds</option>
+                            <option>6.5 pounds</option>
+                            <option>7 pounds</option>
+                            <option>7.5 pounds</option>
+                            <option>8 pounds</option>
+                            <option>8.5 pounds</option>
+                            <option>9 pounds</option>
+                            <option>9.5 pounds</option>
+                            <option>More than 10 pounds</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <label class="label">When do you think baby will be born?</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="mm/DD">
+                </div>
+            </div>
+
+            <div class="field is-grouped is-grouped-centered">
+                <p class="control">
+                    <a class="button is-black">
+                        Submit
+                    </a>
+                </p>
+                <p class="control">
+                    <a class="button is-light">
+                        Cancel
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</form>
+{{!-- {{/if}} --}}
+
+<script src="/javascript/mom-sign-in.js"></script>
+<script src="/javascript/guest-sign-in.js"></script>

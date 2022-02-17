@@ -39,6 +39,11 @@ Mom.init(
             validate: {
                 len: [6, 16]
             }
+        },
+        // mom's baby's expected date of birth
+        dob: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
         }
     },
     {
