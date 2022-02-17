@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Post, Mom } = require('../../models');
+// const withAuth = require('../../utils/auth');
 
-// get all moms
+// get all posts
 router.get('/', (req, res) => {
     Post.findAll({
         // Query configuration
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
             {
                 model: Mom,
                 attributes: ['name']
-            }
+            },
         ]
     })
     .then(dbPostData => res.json(dbPostData))

@@ -41,6 +41,17 @@ Guest.init(
                 len: [6, 16]
             }
         },
+        mom_email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true
+            },
+            references: {
+                model: 'mom',
+                key: 'email'
+            }
+        },
         mom_id: {
             type: DataTypes.INTEGER,
             references: {
