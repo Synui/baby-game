@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Mom } = require('../../models');
+const { Mom, Guest, Post } = require('../../models');
+// const withAuth = require('../../utils/auth');
 
 // GET all Moms - /api/Moms
 router.get('/', (req, res) => {
@@ -22,6 +23,23 @@ router.get('/:id', (req, res) => {
         attributes: { 
             exclude: ['password'] 
         },
+        include: [
+            {
+                model: Post,
+                attributes: [
+                    'id',
+                    'title'
+                ]
+            },
+            {
+                model: Guest,
+                attributes: [
+                    'id',
+                    'name',
+                    'email'
+                ]
+            }
+        ],
         where: {
             id: req.params.id
         },
@@ -44,11 +62,12 @@ router.post('/', (req, res) => {
     Mom.create({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        dob: req.body.dob,
     })
     .then(dbMomData => {
         req.session.save(() => {
-            req.session.user_id = dbMomData.id;
+            req.session.mom_id = dbMomData.id;
             req.session.name = dbMomData.name;
             req.session.loggedIn = true;
 
@@ -62,7 +81,7 @@ router.post('/', (req, res) => {
 });
 
 // POST authorize mom in login - /api/moms/login
-router.post('/login', (req, res) => {
+router.post('/mom/login', (req, res) => {
     Mom.findOne({
         where: {
             email: req.body.email
