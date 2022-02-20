@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Guest, Mom } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const { Guest, Mom, Answers } = require('../../models');
 
 // GET all guests - /api/guests
 router.get('/', (req, res) => {
@@ -33,6 +32,15 @@ router.get('/:id', (req, res) => {
                     'id',
                     'name',
                     'email'
+                ]
+            },
+            {
+                model: Answers,
+                attributes: [
+                    'id',
+                    'gender',
+                    'weight_in_pounds',
+                    'date_of_birth'
                 ]
             }
         ],
@@ -99,7 +107,7 @@ router.post('/login', (req, res) => {
                 req.session.name = dbGuestData.name;
                 req.session.loggedIn = true;
 
-                res.json({ Guest: dbGuestData, message: 'You are now logged in!' });
+                res.json({ guest: dbGuestData, message: 'You are now logged in!' });
             });
         });
 });

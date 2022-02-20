@@ -1,7 +1,7 @@
 {{!-- {{#if loggedIn}} --}}
 <p class="title is-1 has-text-black">Time to make your Votes!</p>
 
-<form class="box has-background-black">
+<form class="box has-background-black" id="answer-form">
     <div class="container">
         <div class="notification has-background-white">
             <div class="block">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="field-body">
                     <div class="field is-narrow">
-                        <div class="control">
+                        <div class="control gender-choice">
                             <label class="radio">
                                 <input type="radio" name="member">
                                 Boy
@@ -32,8 +32,8 @@
             <div class="field is-horizontal">
                 <label class="label">How much do you think baby will weigh?</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="weight-choice select">
+                        <select >
                             <option>Select dropdown</option>
                             <option>Less than 6 pounds</option>
                             <option>6.5 pounds</option>
@@ -52,26 +52,26 @@
             <div class="field is-horizontal">
                 <label class="label">When do you think baby will be born?</label>
                 <div class="control">
-                    <input class="input" type="date" placeholder="mm/dd/yyy">
+                    <input class="input date-choice" type="date" placeholder="mm/dd/yyy">
                 </div>
             </div>
 
             <div class="field is-grouped is-grouped-centered">
                 <p class="control">
-                    <a href="cards-with-posts" class="button is-black">
+                    <a href="/cards-with-posts" class="button is-black">
                         Submit
                     </a>
                 </p>
                 <p class="control">
-                    <a class="button is-light">
+                    <a href="/" class="button is-light">
                         Cancel
                     </a>
                 </p>
             </div>
-                <div class="block">
+                {{!-- <div class="block">
                    <p class="has-text-centered">Want to see what other guests are voting?</p>
                    <P class="has-text-centered has-text-link">FIND OUT HERE!</p>
-                </div>
+                </div> --}}
         </div>
     </div>
 </form>
@@ -79,3 +79,4 @@
 
 <script src="/javascript/mom-sign-in.js"></script>
 <script src="/javascript/guest-sign-in.js"></script>
+<script src="/javascript/answers-post.js"></script>

@@ -19,6 +19,13 @@ Post.init(
                 model: 'mom',
                 key: 'id'
             }
+        },
+        mom_email: {
+            type: DataTypes.STRING,
+            references: {
+                model: 'mom',
+                key: 'email'
+            }
         }
     },
     {

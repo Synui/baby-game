@@ -11,4 +11,4 @@ async function guestLogout() {
     }
   }
   
-  document.querySelector('#guest-logout').addEventListener('click', guestLogout);
+  document.querySelector('.guest-logout').addEventListener('click', guestLogout);

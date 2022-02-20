@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Answers, Guest } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // get all guests
 router.get('/', (req, res) => {
@@ -10,7 +11,7 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: Guest,
-                attributes: ['name']
+                attributes: ['id', 'name']
             }
         ]
     })
@@ -27,11 +28,11 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'gender', 'weight_in_pounds', 'date_of_birth', 'created_at'],
+        attributes: ['id', 'gender', 'weight_in_pounds', 'date_of_birth', 'created_at', 'guest_id'],
         include: [
             {
                 model: Guest,
-                attributes: ['name']
+                attributes: ['id', 'name']
             }
         ]
     })
@@ -48,8 +49,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// creat post route
-router.post('/', (req, res) => {
+// create answer route
+router.post('/', withAuth, (req, res) => {
     Answers.create({
         // using req.body to populate the columns in the answers table.
         gender: req.body.gender,

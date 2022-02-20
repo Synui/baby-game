@@ -21,7 +21,6 @@ Guest.init(
         // guest's own name
         name: {
             type: DataTypes.STRING,
-            isAdmin: true,
             allowNull: false
         },
         // guest's own email

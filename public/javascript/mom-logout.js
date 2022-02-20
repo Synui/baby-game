@@ -11,4 +11,4 @@ async function momLogout() {
     }
   }
   
-  document.querySelector('#mom-logout').addEventListener('click', momLogout);
+  document.querySelector('.mom-logout').addEventListener('click', momLogout);
